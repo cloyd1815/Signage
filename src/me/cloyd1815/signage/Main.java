@@ -160,6 +160,14 @@ public class Main extends JFrame {
 					if (chckbxQuarterPage.isSelected())
 						return SignType.SAVE_MORE_QUARTER;
 				}
+				if (myButtonGroup.getSelection().equals(rdbtnRegularPrice)) {
+					if (chckbxFullPage.isSelected())
+						return SignType.REGULAR_PRICE_FULL;
+					if (chckbxHalfPage.isSelected())
+						return SignType.REGULAR_PRICE_HALF;
+					if (chckbxQuarterPage.isSelected())
+						return SignType.REGULAR_PRICE_QUATER;
+				}
 				return null;
 			}
 		});
