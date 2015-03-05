@@ -18,9 +18,9 @@ public class Sign {
 	public static void make(String brandText, String sizeText,
 			String priceText, String upcText, SignType signType) {
 		if (signType.equals(SignType.REGULAR_PRICE_HALF)) {
-			String filePath = "HALF_PAGE_REG.doc";
-			String tempfilePath = "HALF_PAGE_REG_TEMP.doc";
-			File file = new File("HALF_PAGE_REG_TEMP.doc");
+			String filePath = "assets/HALF_PAGE_REG.doc";
+			String tempfilePath = "assets/HALF_PAGE_REG_TEMP.doc";
+			File file = new File("assets/HALF_PAGE_REG_TEMP.doc");
 	        POIFSFileSystem fs = null;        
 	        try {            
 	            fs = new POIFSFileSystem(new FileInputStream(filePath));            

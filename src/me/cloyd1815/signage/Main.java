@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -90,37 +89,49 @@ public class Main extends JFrame {
 
 		JRadioButton rdbtnRegularPrice = new JRadioButton("Regular Price");
 		rdbtnRegularPrice.setBounds(181, 308, 89, 23);
+		rdbtnRegularPrice.setActionCommand("reg");
 		contentPane.add(rdbtnRegularPrice);
 
 		JRadioButton rdbtnSaveMore = new JRadioButton("Save More");
 		rdbtnSaveMore.setBounds(99, 308, 80, 23);
+		rdbtnSaveMore.setActionCommand("save");
 		contentPane.add(rdbtnSaveMore);
 
 		JRadioButton rdbtnWeeklySpecial = new JRadioButton("Weekly Special");
 		rdbtnWeeklySpecial.setBounds(0, 308, 97, 23);
+		rdbtnWeeklySpecial.setActionCommand("weekly");
 		contentPane.add(rdbtnWeeklySpecial);
 
-		JCheckBox chckbxFullPage = new JCheckBox("Full Page");
-		chckbxFullPage.setBounds(10, 348, 97, 23);
-		contentPane.add(chckbxFullPage);
+		JRadioButton fullPage = new JRadioButton("Full Page");
+		fullPage.setBounds(10, 348, 97, 23);
+		fullPage.setActionCommand("full");
+		contentPane.add(fullPage);
 
-		JCheckBox chckbxHalfPage = new JCheckBox("Half Page");
-		chckbxHalfPage.setBounds(109, 348, 97, 23);
-		contentPane.add(chckbxHalfPage);
+		JRadioButton halfPage = new JRadioButton("Half Page");
+		halfPage.setBounds(109, 348, 97, 23);
+		halfPage.setActionCommand("half");
+		contentPane.add(halfPage);
 
-		JCheckBox chckbxQuarterPage = new JCheckBox("Quarter Page");
-		chckbxQuarterPage.setBounds(208, 348, 97, 23);
-		contentPane.add(chckbxQuarterPage);
+		JRadioButton quarterPage = new JRadioButton("Quarter Page");
+		quarterPage.setBounds(208, 348, 97, 23);
+		quarterPage.setActionCommand("quarter");
+		contentPane.add(quarterPage);
 
 		JRadioButton rdbtnFarmFresh = new JRadioButton("Farm Fresh");
 		rdbtnFarmFresh.setBounds(272, 308, 89, 23);
+		rdbtnFarmFresh.setActionCommand("farm");
 		contentPane.add(rdbtnFarmFresh);
 
-		ButtonGroup myButtonGroup = new ButtonGroup();
-		myButtonGroup.add(rdbtnRegularPrice);
-		myButtonGroup.add(rdbtnSaveMore);
-		myButtonGroup.add(rdbtnWeeklySpecial);
-		myButtonGroup.add(rdbtnFarmFresh);
+		ButtonGroup signTypeBtnGrp = new ButtonGroup();
+		signTypeBtnGrp.add(rdbtnRegularPrice);
+		signTypeBtnGrp.add(rdbtnSaveMore);
+		signTypeBtnGrp.add(rdbtnWeeklySpecial);
+		signTypeBtnGrp.add(rdbtnFarmFresh);
+		
+		ButtonGroup signSizeBtnGrp = new ButtonGroup();
+		signSizeBtnGrp.add(fullPage);
+		signSizeBtnGrp.add(halfPage);
+		signSizeBtnGrp.add(quarterPage);
 
 		btnMake.addActionListener(new ActionListener() {
 
@@ -136,36 +147,36 @@ public class Main extends JFrame {
 			}
 
 			private SignType getSignType() {
-				if (myButtonGroup.getSelection().equals(rdbtnFarmFresh)) {
-					if (chckbxFullPage.isSelected())
+				if (rdbtnFarmFresh.isSelected()) {
+					if (fullPage.isSelected())
 						return SignType.FARM_FRESH_FULL;
-					if (chckbxHalfPage.isSelected())
+					if (halfPage.isSelected())
 						return SignType.FARM_FRESH_HALF;
-					if (chckbxQuarterPage.isSelected())
+					if (quarterPage.isSelected())
 						return SignType.FARM_FRESH_QUARTER;
 				}
-				if (myButtonGroup.getSelection().equals(rdbtnWeeklySpecial)) {
-					if (chckbxFullPage.isSelected())
+				if (rdbtnWeeklySpecial.isSelected()) {
+					if (fullPage.isSelected())
 						return SignType.WEEKLY_SPECIAL_FULL;
-					if (chckbxHalfPage.isSelected())
+					if (halfPage.isSelected())
 						return SignType.WEEKLY_SPECIAL_HALF;
-					if (chckbxQuarterPage.isSelected())
+					if (quarterPage.isSelected())
 						return SignType.WEEKLY_SPECIAL_QUARTER;
 				}
-				if (myButtonGroup.getSelection().equals(rdbtnSaveMore)) {
-					if (chckbxFullPage.isSelected())
+				if (rdbtnSaveMore.isSelected()) {
+					if (fullPage.isSelected())
 						return SignType.SAVE_MORE_FULL;
-					if (chckbxHalfPage.isSelected())
+					if (halfPage.isSelected())
 						return SignType.SAVE_MORE_HALF;
-					if (chckbxQuarterPage.isSelected())
+					if (quarterPage.isSelected())
 						return SignType.SAVE_MORE_QUARTER;
 				}
-				if (myButtonGroup.getSelection().equals(rdbtnRegularPrice)) {
-					if (chckbxFullPage.isSelected())
+				if (rdbtnRegularPrice.isSelected()) {
+					if (fullPage.isSelected())
 						return SignType.REGULAR_PRICE_FULL;
-					if (chckbxHalfPage.isSelected())
+					if (halfPage.isSelected())
 						return SignType.REGULAR_PRICE_HALF;
-					if (chckbxQuarterPage.isSelected())
+					if (quarterPage.isSelected())
 						return SignType.REGULAR_PRICE_QUATER;
 				}
 				return null;
